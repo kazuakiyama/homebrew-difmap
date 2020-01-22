@@ -40,6 +40,21 @@ class Difmap < Formula
     prefix.install Dir['help/*.hlp']
     bin.install ['difmap']
   end
+
+  def caveats
+    msg = <<-EOF.undent
+  Don't forget to add paths for PGPLOT before using DIFMAP.
+  Add the following line to your ~/.bash_profile or ~/.zshrc file
+  (and remember to source the file to update your current session):
+  
+  PGPLOT_DIR=`brew --prefix pgplot`/share
+  if [ -e $PGPLOT_DIR ]; then
+    export PGPLOT_DIR=$PGPLOT_DIR
+    export PGPLOT_DEV=/xserve
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
+  fi
+  EOF
+  end
 end
 __END__
 diff --git a/configure b/configure
