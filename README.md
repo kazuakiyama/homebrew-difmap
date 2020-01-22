@@ -20,6 +20,14 @@ if [ -e $PGPLOT_DIR ]; then
 fi
 ```
 
+Help files and other material will be copied to a Cellar directory for DIFMAP. You can get the directory path by
+
+
+```bash
+brew --prefix difmap
+```
+
+
 ## Contact
 If you find any issues related to this brew formula, please post issues in this github repository 
 or contact me ([Kazu Akiyama](http://kazuakiyama.github.io/)). For any issues on DIFMAP itself, 
