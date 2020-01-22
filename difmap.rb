@@ -42,7 +42,7 @@ class Difmap < Formula
   end
 
   def caveats
-    msg = <<-EOF
+    msg = <<~EOF
 Don't forget to add paths for PGPLOT before using DIFMAP.
 Add the following line to your ~/.bash_profile or ~/.zshrc file
 (and remember to source the file to update your current session):
