@@ -1,10 +1,10 @@
 class Difmap < Formula
   desc "DIFMAP: A Caltech VLBI Program"
   homepage "http://www.astro.caltech.edu/~tjp/citvlb/index.html"
-  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5e.tar.gz"
+  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5k.tar.gz"
   sha256 "457cd77c146e22b5332403c19b29485388a863ec494fff87137176396fc6a9ff"
-  version "2.5e"
-
+  version "2.5k"
+  
   depends_on "gcc"
   depends_on "pgplot"
   depends_on :x11
