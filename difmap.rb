@@ -7,7 +7,7 @@ class Difmap < Formula
   
   depends_on "gcc"
   depends_on "pgplot"
-  depends_on cask: => "xquartz"
+  depends_on :x11
 
   fails_with :clang do
     cause "Miscompilation resulting in segfault on queries"
