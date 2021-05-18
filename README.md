@@ -3,9 +3,14 @@ This is a Homebrew formula for DIFMAP, one of [Caltech's VLBI software packages]
 This allows a quick install of DIFMAP for macOS+homebrew users
 
 ## Installation of DIFMAP with brew using this formula
+homebrew recently removed pgplot for a Licence issue. 
+I made [a back up (+ minor modificaiton) of the latest pgplot formula just before being removed](https://github.com/kazuakiyama/homebrew-pgplot).
 You just need to tap this repository and install difmap.
 
 ```bash
+brew tap kazuakiyama/pgplot
+brew install pgplot
+
 brew tap kazuakiyama/difmap
 brew install difmap
 ```
