@@ -1,9 +1,9 @@
 class Difmap < Formula
   desc "DIFMAP: A Caltech VLBI Program"
   homepage "http://www.astro.caltech.edu/~tjp/citvlb/index.html"
-  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5k.tar.gz"
-  sha256 "d754dcc094a758a817677fe493bde13408cc270910f6bb7bbc3487e002cc184e"
-  version "2.5k"
+  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5o.tar.gz"
+  sha256 "246e585133d9505d6d601632458469bd617a933f1b19f271c2a63f8588c4f577"
+  version "2.5o"
   
   depends_on "gcc"
   depends_on "libx11"
