@@ -13,7 +13,10 @@ class Difmap < Formula
     cause "Miscompilation resulting in segfault on queries"
   end
 
-  patch :DATA
+  patch :p0 do
+    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/main/patch_difmap2.5p_configure.diff"
+    sha256 "371e846d2bdffa0f47e11214e3c044f848a7a718b9723f53e2324f4ad1021f4f"
+  end
 
   def install
     ENV.fortran
@@ -53,26 +56,3 @@ class Difmap < Formula
     system "false"
   end
 end
-__END__
-diff --git a/configure b/configure
-index 0e48dfb..51a1e4d 100755
---- a/configure
-+++ b/configure
-@@ -325,7 +325,7 @@
- ;;
-
-   apple-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
--    CC=gcc
-+    CC=$CCOMPL
-     FC=gfortran
-     CFLAGS="$CFLAGS -Dapple_osx"
- #
-@@ -346,7 +346,7 @@
- ;;
-
-   intel-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
--    CC=gcc
-+    CC=$CCOMPL
-     FC=gfortran
-     CFLAGS="$CFLAGS -Dintel_osx"
- #
