@@ -1,9 +1,9 @@
 class Difmap < Formula
   desc "DIFMAP: A Caltech VLBI Program"
   homepage "http://www.astro.caltech.edu/~tjp/citvlb/index.html"
-  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5o.tar.gz"
-  sha256 "246e585133d9505d6d601632458469bd617a933f1b19f271c2a63f8588c4f577"
-  version "2.5o"
+  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5p.tar.gz"
+  sha256 "458fdc0f85eb03974b264061c0f171ad15e46d6f5d4fc45268f42950cbb3d8ea"
+  version "2.5p"
   
   depends_on "gcc"
   depends_on "libx11"
@@ -25,7 +25,7 @@ class Difmap < Formula
     inreplace "configure" do |s|
       s.change_make_var! "HELPDIR", prefix
       s.change_make_var! "PGPLOT_LIB", pgplotlib
-    end
+    endcd
 
     system "./configure", "intel-osx-gcc"
     system "./makeall"
@@ -62,7 +62,7 @@ index 0e48dfb..51a1e4d 100755
  ;;
  
    apple-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
--    CC=gcc-4
+-    CC=gcc
 +    CC=$CCOMPL
      FC=gfortran
      CFLAGS="$CFLAGS -Dapple_osx"
@@ -71,7 +71,7 @@ index 0e48dfb..51a1e4d 100755
  ;;
  
    intel-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
--    CC=gcc-4
+-    CC=gcc
 +    CC=$CCOMPL
      FC=gfortran
      CFLAGS="$CFLAGS -Dintel_osx"
