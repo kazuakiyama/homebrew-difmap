@@ -25,7 +25,7 @@ class Difmap < Formula
     inreplace "configure" do |s|
       s.change_make_var! "HELPDIR", prefix
       s.change_make_var! "PGPLOT_LIB", pgplotlib
-    endcd
+    end
 
     system "./configure", "intel-osx-gcc"
     system "./makeall"
@@ -58,18 +58,18 @@ diff --git a/configure b/configure
 index 0e48dfb..51a1e4d 100755
 --- a/configure
 +++ b/configure
-@@ -326,7 +326,7 @@ case $OS in
+@@ -325,7 +325,7 @@
  ;;
- 
+
    apple-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
 -    CC=gcc
 +    CC=$CCOMPL
      FC=gfortran
      CFLAGS="$CFLAGS -Dapple_osx"
  #
-@@ -347,7 +347,7 @@ case $OS in
+@@ -346,7 +346,7 @@
  ;;
- 
+
    intel-osx-gcc)   # Macintosh computer running OSX, using the Gnu C compiler.
 -    CC=gcc
 +    CC=$CCOMPL
