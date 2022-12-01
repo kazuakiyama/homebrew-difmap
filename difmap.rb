@@ -1,10 +1,10 @@
 class Difmap < Formula
-  desc "DIFMAP: A Caltech VLBI Program"
-  homepage "http://www.astro.caltech.edu/~tjp/citvlb/index.html"
+  desc "Caltech VLBI software package for interferometric imaging"
+  homepage "https://sites.astro.caltech.edu/~tjp/citvlb/index.html"
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5p.tar.gz"
-  sha256 "458fdc0f85eb03974b264061c0f171ad15e46d6f5d4fc45268f42950cbb3d8ea"
   version "2.5p"
-  
+  sha256 "458fdc0f85eb03974b264061c0f171ad15e46d6f5d4fc45268f42950cbb3d8ea"
+
   depends_on "gcc"
   depends_on "libx11"
   depends_on "pgplot"
@@ -14,7 +14,7 @@ class Difmap < Formula
   end
 
   patch :p0 do
-    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/main/patch_difmap2.5p_configure.diff"
+    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/3993800742638bbc3e2eac53b009ef0ca1101e8c/patch_difmap2.5p_configure.diff"
     sha256 "371e846d2bdffa0f47e11214e3c044f848a7a718b9723f53e2324f4ad1021f4f"
   end
 
@@ -38,7 +38,7 @@ class Difmap < Formula
   end
 
   def caveats
-    msg = <<~EOF
+    <<~EOF
       Don't forget to add paths for PGPLOT before using DIFMAP.
       For instance, you can add the following lines to your ~/.bash_profile or ~/.zshrc file
       (and remember to source the file to update your current session):
@@ -49,7 +49,6 @@ class Difmap < Formula
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
       fi
     EOF
-    msg
   end
 
   test do
