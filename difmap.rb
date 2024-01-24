@@ -31,7 +31,14 @@ class Difmap < Formula
       s.change_make_var! "PGPLOT_LIB", pgplotlib
     end
 
-    if (system 'sw_vers -productVersion').to_f >= 13.0
+    swver = (system 'sw_vers -productVersion')
+    swver = swver.split('.')
+    if swver.length >= 2
+      swver = "#{parts[0]}.#{parts[1]}".to_f
+    else
+      swver = swver[0].to_f
+    end
+    if swver >= 13.0
       inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src ./configure --without-man-pages CFLAGS=-mmacosx-version-min=12.4.0)"
     end
 
