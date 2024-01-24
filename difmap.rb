@@ -6,6 +6,7 @@ class Difmap < Formula
   sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
   revision 0
 
+  depends_on "gawk"
   depends_on "gcc"
   depends_on "libx11"
   depends_on "pgplot"
@@ -31,14 +32,7 @@ class Difmap < Formula
       s.change_make_var! "PGPLOT_LIB", pgplotlib
     end
 
-    swver = (system 'sw_vers -productVersion')
-    swver = swver.split('.')
-    if swver.length >= 2
-      swver = "#{parts[0]}.#{parts[1]}".to_f
-    else
-      swver = swver[0].to_f
-    end
-    if swver >= 13.0
+    if (system 'sw_vers -productVersion | gawk -F'.' '{print $1"."$2}'').to_f >= 13.0
       inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src ./configure --without-man-pages CFLAGS=-mmacosx-version-min=12.4.0)"
     end
 
