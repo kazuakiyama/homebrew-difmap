@@ -14,8 +14,8 @@ class Difmap < Formula
   end
 
   patch :p0 do
-    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/3993800742638bbc3e2eac53b009ef0ca1101e8c/patch_difmap2.5p_configure.diff"
-    sha256 "371e846d2bdffa0f47e11214e3c044f848a7a718b9723f53e2324f4ad1021f4f"
+    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/1a9d6fa75a6b27c87a10ac4f59abbf644349da8e/patch_difmap2.5p_configure.diff"
+    sha256 "1e906d857a06cce0a8066a489f032edafd5af34e1877b809688efe501d007482"
   end
 
   def install
