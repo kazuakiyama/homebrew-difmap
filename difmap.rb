@@ -4,6 +4,7 @@ class Difmap < Formula
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5p.tar.gz"
   version "2.5p"
   sha256 "458fdc0f85eb03974b264061c0f171ad15e46d6f5d4fc45268f42950cbb3d8ea"
+  revision 1
 
   depends_on "gcc"
   depends_on "libx11"
