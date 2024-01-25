@@ -38,6 +38,6 @@ brew --prefix difmap
 
 ## Contact
 If you find any issues related to this brew formula, please post [issues](https://github.com/kazuakiyama/homebrew-difmap/issues) in this github repository
-or directly contact me ([Kazu Akiyama](https://sites.mit.edu/kazuakiyama)). I would note that, as I'm *no longer an active user of DIFMAP*, 
+or directly contact me ([Kazu Akiyama](https://sites.mit.edu/kazuakiyama)). I would note that, as I'm **no longer an active user of DIFMAP**, 
 I do not frequently check the latest version of the package. Please contact me if you find a newer version of DIFMAP which is not yet reflected in my formula.
 For any issues on DIFMAP itself, you should contact Martin C. Shepherd at Caltech maintaining [DIFMAP](http://www.astro.caltech.edu/~tjp/citvlb/index.html).
