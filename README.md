@@ -18,7 +18,7 @@ brew install difmap
 Don't forget to add paths for PGPLOT before using DIFMAP. For instance, you can add the following line to your ~/.bashrc_profile or ~/.zprofile files (and remember to source the file to update your current session):
 
 ```bash
-PGPLOT_DIR=`brew --prefix pgplot`/share
+PGPLOT_DIR=`brew --prefix pgplot`/lib
 if [ -e $PGPLOT_DIR ]; then
   export PGPLOT_DIR=$PGPLOT_DIR
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR

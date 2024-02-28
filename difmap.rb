@@ -4,7 +4,7 @@ class Difmap < Formula
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5q.tar.gz"
   version "2.5q"
   sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
-  revision 0
+  revision 1
 
   depends_on "gawk"
   depends_on "gcc"
@@ -56,7 +56,7 @@ class Difmap < Formula
       Don't forget to add paths for PGPLOT before using DIFMAP.
       For instance, you can add the following lines to your ~/.bash_profile or ~/.zshrc file
       (and remember to source the file to update your current session):
-      PGPLOT_DIR=`brew --prefix pgplot`/share
+      PGPLOT_DIR=`brew --prefix pgplot`/lib
       if [ -e $PGPLOT_DIR ]; then
         export PGPLOT_DIR=$PGPLOT_DIR
         export PGPLOT_DEV=/xwin       # This is up to your preference. /xserve might be your choise.
