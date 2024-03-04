@@ -4,7 +4,7 @@ class Difmap < Formula
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5q.tar.gz"
   version "2.5q"
   sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
-  revision 1
+  revision 2
 
   depends_on "gawk"
   depends_on "gcc"
@@ -32,8 +32,7 @@ class Difmap < Formula
       s.change_make_var! "PGPLOT_LIB", pgplotlib
     end
 
-    swver = `sw_vers -productVersion | gawk -F'.' '{print $1"."$2}'`.to_f
-    if swver >= 13.0
+    if MacOS.version >= :ventura
       inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src ./configure --without-man-pages CFLAGS=-mmacosx-version-min=12.4.0)"
     end
 
