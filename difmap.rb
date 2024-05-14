@@ -24,11 +24,13 @@ class Difmap < Formula
     ENV.fortran
     ENV.deparallelize
     ENV.append "CCOMPL", :gcc
-    ENV.append "PGPLOT_LIB", "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
+    
+    pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
+    ENV.append "PGPLOT_LIB", pgplotlib
 
     inreplace "configure" do |s|
       s.change_make_var! "HELPDIR", prefix
-      s.change_make_var! "PGPLOT_LIB", "#{PGPLOT_LIB}"
+      s.change_make_var! "PGPLOT_LIB", pgplotlib
     end
 
     if MacOS.version >= :ventura
@@ -36,11 +38,11 @@ class Difmap < Formula
     end
 
     on_intel do
-      system "./configure", "intel-osx-gcc", "CCOMPL=#{CCOMPL}", "PGPLOT_LIB=#{PGPLOT_LIB}", "HELPDIR=#{prefix}"
+      system "./configure", "intel-osx-gcc"
     end
 
     on_arm do
-      system "./configure", "arm-osx-gcc", "CCOMPL=#{CCOMPL}", "PGPLOT_LIB=#{PGPLOT_LIB}", "HELPDIR={#prefix}"
+      system "./configure", "arm-osx-gcc"
     end
 
     system "./makeall"
