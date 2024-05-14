@@ -39,7 +39,7 @@ class Difmap < Formula
 
     on_intel do
       #system "./configure", "intel-osx-gcc"
-      system "./configure", "intel-osx-gcc", "CCOMPL=#{:gcc}", "PGPLOT_LIB=#{pgplot}", "HELPDIR=#{prefix}"
+      system "./configure", "intel-osx-gcc", "CCOMPL=#{:gcc}", "PGPLOT_LIB=#{pgplotlib}", "HELPDIR=#{prefix}"
     end
 
     on_arm do
