@@ -23,7 +23,7 @@ class Difmap < Formula
   def install
     ENV.fortran
     ENV.deparallelize
-    ENV.append "CCOMPL", "gcc-14"
+    ENV.append "CCOMPL", :gcc
     
     pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
     ENV.append "PGPLOT_LIB", pgplotlib
@@ -37,9 +37,11 @@ class Difmap < Formula
       inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src ./configure --without-man-pages CFLAGS=-mmacosx-version-min=12.4.0)"
     end
 
+    system "gcc", "--version"
+
     on_intel do
       #system "./configure", "intel-osx-gcc"
-      system "./configure", "intel-osx-gcc", "CCOMPL='gcc-14'", "PGPLOT_LIB='#{pgplotlib}'", "HELPDIR='#{prefix}'"
+      system "./configure", "intel-osx-gcc", "CCOMPL=#{:gcc}", "PGPLOT_LIB='#{pgplotlib}'", "HELPDIR=#{prefix}"
     end
 
     on_arm do
