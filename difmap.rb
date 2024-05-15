@@ -4,7 +4,7 @@ class Difmap < Formula
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5q.tar.gz"
   version "2.5q"
   sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
-  revision 2
+  revision 3
 
   depends_on "gawk"
   depends_on "gcc"
@@ -16,32 +16,28 @@ class Difmap < Formula
   end
 
   patch :p0 do
-    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/2496fc72884034f1daacf3959f8e73dc51c23a62/patch_difmap2.5q_configure.diff"
+    url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/078048a1fa1bb319078e62823e9669d52f0547f5/patch_difmap2.5q_configure.diff"
     sha256 "49f48f93c2bdf294c7daa20448e3dd8914d67903847df74699f0ceafa23750d5"
   end
 
   def install
     ENV.fortran
     ENV.deparallelize
-    ENV.append "CCOMPL", :gcc
+
+    # C Compiler
+    ENV.append "CC", "#{:gcc}"
+    ENV.append "CCOMPL", "#{:gcc}"
     
+    # Compiler settings for PGPLOT
     pgplotlib = "-L#{HOMEBREW_PREFIX}/lib -lpgplot -lX11 -lpng"
     ENV.append "PGPLOT_LIB", pgplotlib
 
-    inreplace "configure" do |s|
-      s.change_make_var! "HELPDIR", prefix
-      s.change_make_var! "PGPLOT_LIB", pgplotlib
-    end
-
     if MacOS.version >= :ventura
-      inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src ./configure --without-man-pages CFLAGS=-mmacosx-version-min=12.4.0)"
+      inreplace "configure", "(cd libtecla_src; ./configure --without-man-pages)", "(cd libtecla_src; ./configure --without-man-pages CFLAGS='-mmacosx-version-min=12.4.0 -Wno-error=incompatible-pointer-types')"
     end
-
-    system "gcc", "--version"
 
     on_intel do
-      #system "./configure", "intel-osx-gcc"
-      system "./configure", "intel-osx-gcc", "CCOMPL=#{:gcc}", "PGPLOT_LIB='#{pgplotlib}'", "HELPDIR=#{prefix}"
+      system "./configure", "intel-osx-gcc"
     end
 
     on_arm do
