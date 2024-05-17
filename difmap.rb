@@ -4,7 +4,7 @@ class Difmap < Formula
   url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5q.tar.gz"
   version "2.5q"
   sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
-  revision 4
+  revision 5
 
   depends_on "gawk"
   depends_on "gcc"
@@ -33,11 +33,11 @@ class Difmap < Formula
     ENV.append "PGPLOT_LIB", pgplotlib
 
     # Compiler settings for HELPDIR
-    ENV.append "HELPDIR", prefix
+    ENV.append "HELPDIR", "#{prefix}/help"
     
     # edit configure file
     inreplace "configure" do |s|
-      s.change_make_var! "HELPDIR", prefix
+      s.change_make_var! "HELPDIR", "#{prefix}/help"
       s.change_make_var! "PGPLOT_LIB", pgplotlib
     end
 
@@ -55,7 +55,7 @@ class Difmap < Formula
 
     system "./makeall"
 
-    prefix.install Dir["help/*.hlp"]
+    prefix.install Dir["help"]
     bin.install ["difmap"]
   end
 
