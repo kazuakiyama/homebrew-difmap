@@ -36,6 +36,18 @@ brew --prefix difmap
 ```
 
 
+## Continuous integration
+
+GitHub Actions builds PGPLOT and DIFMAP from source on macOS 15 for both
+Apple Silicon and Intel, on every push and pull request. It runs PGPLOT's
+PNG output tests and checks that DIFMAP starts, reports the expected version,
+evaluates an expression, and installs its help files. These checks do not
+exercise interactive X11 windows or imaging with observation data.
+
+You can also run the workflow manually from the repository's Actions tab
+by selecting **Build and test DIFMAP**, then **Run workflow**. Homebrew build
+logs are attached to each run as artifacts, including failed runs.
+
 ## Contact
 If you find any issues related to this brew formula, please post [issues](https://github.com/kazuakiyama/homebrew-difmap/issues) in this github repository
 or directly contact me ([Kazu Akiyama](https://sites.mit.edu/kazuakiyama)). I would note that, as I'm **no longer an active user of DIFMAP**, 

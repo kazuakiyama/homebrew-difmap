@@ -1,10 +1,9 @@
 class Difmap < Formula
   desc "Caltech VLBI software package for interferometric imaging"
   homepage "https://sites.astro.caltech.edu/~tjp/citvlb/index.html"
-  url "ftp://ftp.astro.caltech.edu/pub/difmap/difmap2.5q.tar.gz"
-  version "2.5q"
-  sha256 "18f61641a56d41624e603bf64794c9f1b072eea320a0c1e0a22ac0ca4d3cef95"
-  revision 5
+  url "https://sites.astro.caltech.edu/~mcs/difmap/difmap2.5r.tar.gz"
+  version "2.5r"
+  sha256 "0152e145c9a52ae29aaaf2d51380fa0199d4b7a14c9cdf0b6c8fe9884fb4fe7b"
 
   depends_on "gawk"
   depends_on "gcc"
@@ -15,6 +14,7 @@ class Difmap < Formula
     cause "Miscompilation resulting in segfault on queries"
   end
 
+  # The configure script is unchanged between 2.5q and 2.5r.
   patch :p0 do
     url "https://raw.githubusercontent.com/kazuakiyama/hb-difmap-patches/8a4affbe67bb678e4b879f7fa90bb3d1df601c27/patch_difmap2.5q_configure.diff"
     sha256 "b448fc1dd1f30eb20b7c3bbd1790302bea3e7fdf9c85572d588aedef7e9e042c"
@@ -74,6 +74,10 @@ class Difmap < Formula
   end
 
   test do
-    system "false"
+    ENV["PGPLOT_DEV"] = "/null"
+    output = pipe_output("#{bin}/difmap", "print 6*7\nquit\n", 0)
+    assert_match "version #{version}", output
+    assert_match(/\b42\b/, output)
+    assert_predicate prefix/"help/difmap.hlp", :exist?
   end
 end
