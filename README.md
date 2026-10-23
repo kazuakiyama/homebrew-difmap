@@ -1,55 +1,32 @@
-# homebrew-difmap
-This is a Homebrew formula for DIFMAP, one of [Caltech's VLBI software packages](http://www.astro.caltech.edu/~tjp/citvlb/index.html). 
-This allows a quick install of DIFMAP for macOS+homebrew users.
+# homebrew-difmap: moved to homebrew-vlbi
 
-## Installation of DIFMAP with brew using this formula
-homebrew recently removed pgplot for a Licence issue. 
-I made [a back up (+ minor modificaiton) of the latest pgplot formula just before being removed](https://github.com/kazuakiyama/homebrew-pgplot).
-You just need to tap this repository and install difmap.
+The DIFMAP Homebrew formula is now maintained in
+[kazuakiyama/homebrew-vlbi](https://github.com/kazuakiyama/homebrew-vlbi),
+together with PGPLOT, SCHED, and DIFMAP.
 
-```bash
-# install PGPLOT
-brew tap kazuakiyama/pgplot
-brew install pgplot
+## New installations
 
-# install DIFMAP
-brew tap kazuakiyama/difmap
-brew install difmap
+```sh
+brew install kazuakiyama/vlbi/difmap
 ```
 
-Don't forget to add paths for PGPLOT before using DIFMAP.
-For instance, you can add the following line to your ~/.bashrc_profile or ~/.zprofile files (and remember to source the file to update your current session):
+## Existing installations
 
-```bash
-PGPLOT_DIR=`brew --prefix pgplot`/lib
-if [ -e $PGPLOT_DIR ]; then
-  export PGPLOT_DIR=$PGPLOT_DIR
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PGPLOT_DIR
-  export PGPLOT_DEV=/xwin # This is up to your preference. /xserve might be your choise.
-fi
+```sh
+brew tap kazuakiyama/vlbi
+brew update
 ```
 
-Help files and other material will be copied to a Cellar directory for DIFMAP. You can get the directory path by
+This repository provides a `tap_migrations.json` entry so Homebrew can migrate
+installed `difmap` formulae to `kazuakiyama/vlbi`. Follow any trust prompts
+displayed by your Homebrew version, then use `brew upgrade` normally.
+After migration, you can remove this old tap with `brew untap kazuakiyama/difmap`.
+If Homebrew reports that an installed formula still belongs here, leave the tap
+in place and report the migration problem in the new repository.
 
-```bash
-brew --prefix difmap
-```
+See the [new README](https://github.com/kazuakiyama/homebrew-vlbi#readme) for
+environment settings, validation coverage, and migration details.
+Please file new packaging issues in
+[homebrew-vlbi](https://github.com/kazuakiyama/homebrew-vlbi/issues).
 
-
-## Continuous integration
-
-GitHub Actions builds PGPLOT and DIFMAP from source on macOS 15 for both
-Apple Silicon and Intel, on every push and pull request. It runs PGPLOT's
-PNG output tests and checks that DIFMAP starts, reports the expected version,
-evaluates an expression, and installs its help files. These checks do not
-exercise interactive X11 windows or imaging with observation data.
-
-You can also run the workflow manually from the repository's Actions tab
-by selecting **Build and test DIFMAP**, then **Run workflow**. Homebrew build
-logs are attached to each run as artifacts, including failed runs.
-
-## Contact
-If you find any issues related to this brew formula, please post [issues](https://github.com/kazuakiyama/homebrew-difmap/issues) in this github repository
-or directly contact me ([Kazu Akiyama](https://sites.mit.edu/kazuakiyama)). I would note that, as I'm **no longer an active user of DIFMAP**, 
-I do not frequently check the latest version of the package. Please contact me if you find a newer version of DIFMAP which is not yet reflected in my formula.
-For any issues on DIFMAP itself, you should contact Martin C. Shepherd at Caltech maintaining [DIFMAP](http://www.astro.caltech.edu/~tjp/citvlb/index.html).
+This repository remains available for migration and historical reference.
